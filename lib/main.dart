@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       //home: SplashScreen(),
+      
       onGenerateRoute: CustomRouter.onGenerateRoute,
       initialRoute: SplashScreen.routeName,
     );
