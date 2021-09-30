@@ -19,14 +19,32 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+
   @override
   void initState() {
     super.initState();
-    Future.delayed(
-      const Duration(seconds: 3),
-      () => Navigator.of(context).pushNamed(RegistrationScreen.routeName),
+    // Future.delayed(
+    //   const Duration(seconds: 3),
+    //   () => Navigator.of(context).pushNamed(RegistrationScreen.routeName),
+    // );
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+      lowerBound: 0.1,
+      upperBound: 2.0,
     );
+
+    _animationController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        Navigator.of(context).pushNamed(RegistrationScreen.routeName);
+      }
+    });
+
+    _animationController.forward();
   }
 
   @override
@@ -44,15 +62,24 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
           child: Center(
-            child: Image.asset(
-              'assets/images/appLogo.png',
-              // fit: BoxFit.cover,
-              width: SizeConfig.blockSizeHorizontal * 48,
-              height: SizeConfig.blockSizeHorizontal * 55,
+            child: ScaleTransition(
+              scale: _animationController,
+              child: Image.asset(
+                'assets/images/appLogo.png',
+                // fit: BoxFit.cover,
+                width: SizeConfig.blockSizeHorizontal * 48,
+                height: SizeConfig.blockSizeHorizontal * 55,
+              ),
             ),
           ),
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 }

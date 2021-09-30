@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:trivandrum_fish_task/screens/login_screen.dart';
 import 'package:trivandrum_fish_task/screens/screens.dart';
+import 'package:trivandrum_fish_task/screens/verify_email_screen.dart';
 
 class CustomRouter {
   static Route onGenerateRoute(RouteSettings settings) {
@@ -18,6 +20,15 @@ class CustomRouter {
 
       case RegistrationScreen.routeName:
         return RegistrationScreen.route();
+
+      case VerifyEmailScreen.routeName:
+        return VerifyEmailScreen.route();
+
+      case LoginScreen.routeName:
+        return LoginScreen.route();
+
+      case HomeScreen.routeName:
+        return HomeScreen.route();
 
       default:
         return _errorRoute();
