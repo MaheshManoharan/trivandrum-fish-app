@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:trivandrum_fish_task/config/constants.dart';
 import 'package:trivandrum_fish_task/config/size_config.dart';
 
 class VerifyEmailScreen extends StatefulWidget {
@@ -29,6 +30,8 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   Widget build(BuildContext context) {
     //email = ModalRoute.of(context)!.settings.arguments as String?;
 
+    SizeConfig().init(context);
+
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
@@ -46,50 +49,47 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
-              'assets/images/background.png',
+              backgroundImage,
             ),
             fit: BoxFit.cover,
           ),
         ),
-        child: SingleChildScrollView(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: SizeConfig.blockSizeVertical * 13,
-                    ),
-                    Image.asset(
-                      'assets/images/appLogo.png',
-                      // fit: BoxFit.cover,
-                      width: SizeConfig.blockSizeHorizontal * 48,
-                      height: SizeConfig.blockSizeHorizontal * 55,
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(15),
-                      child: Text(
-                        'Please verify your Email',
-                        style: TextStyle(
-                          letterSpacing: 1.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: SizeConfig.blockSizeVertical * 5,
+                  ),
+                  Image.asset(
+                    appLogo,
+                    width: SizeConfig.blockSizeHorizontal * 48,
+                    height: SizeConfig.blockSizeHorizontal * 55,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(15),
+                    child: Text(
+                      'Please verify your Email',
+                      style: TextStyle(
+                        letterSpacing: 1.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    _buildEmailTextField(),
-                    _buildSizedBox(),
-                    _buildOtpTextField(),
-                    _buildSizedBox(),
-                    _buildVerifyCircleButton(),
-                    SizedBox(
-                      height: SizeConfig.blockSizeVertical * 13,
-                    ),
-                  ],
-                ),
+                  ),
+                  _buildEmailTextField(),
+                  _buildSizedBox(),
+                  _buildOtpTextField(),
+                  _buildSizedBox(),
+                  _buildVerifyCircleButton(),
+                  SizedBox(
+                    height: SizeConfig.blockSizeVertical * 5,
+                  ),
+                ],
               ),
             ),
           ),
@@ -121,7 +121,6 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
       ),
       onPressed: () {
         // _verifyOtp();
-        
       },
     );
   }
@@ -174,7 +173,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
         decoration: InputDecoration(
           hintText: 'Email',
           suffixIcon: TextButton(
-            child: Text('Send OTP'),
+            child: const Text('Send OTP'),
             onPressed: () => sendOTP(),
           ),
           hintStyle: TextStyle(

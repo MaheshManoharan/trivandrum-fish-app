@@ -1,4 +1,4 @@
 class Paths {
-  //Top level collections
+  //Top level collections - Firebase
   static const String users = 'users';
 }

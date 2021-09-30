@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trivandrum_fish_task/config/constants.dart';
 import 'package:trivandrum_fish_task/config/size_config.dart';
 import 'package:trivandrum_fish_task/screens/registration_screen.dart';
 import 'package:trivandrum_fish_task/screens/screens.dart';
@@ -26,10 +27,6 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
-    // Future.delayed(
-    //   const Duration(seconds: 3),
-    //   () => Navigator.of(context).pushNamed(RegistrationScreen.routeName),
-    // );
 
     _animationController = AnimationController(
       vsync: this,
@@ -57,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen>
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/background.png'),
+              image: AssetImage(backgroundImage),
               fit: BoxFit.cover,
             ),
           ),
@@ -65,8 +62,7 @@ class _SplashScreenState extends State<SplashScreen>
             child: ScaleTransition(
               scale: _animationController,
               child: Image.asset(
-                'assets/images/appLogo.png',
-                // fit: BoxFit.cover,
+                appLogo,
                 width: SizeConfig.blockSizeHorizontal * 48,
                 height: SizeConfig.blockSizeHorizontal * 55,
               ),

@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:trivandrum_fish_task/config/constants.dart';
 import 'package:trivandrum_fish_task/config/paths.dart';
 import 'package:trivandrum_fish_task/config/size_config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:trivandrum_fish_task/screens/login_screen.dart';
 import 'screens.dart';
 
 class RegistrationScreen extends StatefulWidget {
-  static const String routeName = '/registraiton';
+  static const String routeName = '/registration';
 
   static Route route() {
     return MaterialPageRoute(
@@ -35,7 +35,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
-        //backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
         resizeToAvoidBottomInset: false,
         extendBody: true,
@@ -56,30 +55,29 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           IconButton(
             onPressed: () {},
             icon: SvgPicture.asset(
-              'assets/icons/home.svg',
-              color: Colors.black54,
-            ),
-            //color: Colors.black,
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              'assets/icons/location.svg',
-              color: Colors.black54,
+              homeSvg,
+              color: blackTransparent,
             ),
           ),
           IconButton(
             onPressed: () {},
             icon: SvgPicture.asset(
-              'assets/icons/fish.svg',
-              color: Colors.black54,
+              locationSvg,
+              color: blackTransparent,
             ),
           ),
           IconButton(
             onPressed: () {},
             icon: SvgPicture.asset(
-              'assets/icons/menu.svg',
-              color: Colors.black54,
+              fishSvg,
+              color: blackTransparent,
+            ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(
+              menuSvg,
+              color: blackTransparent,
             ),
             color: Colors.black,
           ),
@@ -95,7 +93,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
-              'assets/images/background.png',
+              backgroundImage,
             ),
             fit: BoxFit.cover,
           ),

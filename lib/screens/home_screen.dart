@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:trivandrum_fish_task/config/constants.dart';
 import 'package:trivandrum_fish_task/config/size_config.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,11 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
-        //backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
         resizeToAvoidBottomInset: false,
         extendBody: true,
-
         body: _buildBody(),
         bottomNavigationBar: _buildBottomNavigationBar(),
       ),
@@ -44,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
-              'assets/images/background.png',
+              backgroundImage,
             ),
             fit: BoxFit.cover,
           ),
@@ -57,14 +56,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: SizeConfig.blockSizeVertical * 15,
                 ),
+                _homeButton(logfishingspot, () {}),
                 _buildSizedBox(),
-                _homeButton1(),
+                _homeButton(viewmyspots, () {}),
                 _buildSizedBox(),
-                _homeButton2(),
+                _homeButton(viewmycatches, () {}),
                 _buildSizedBox(),
-                _homeButton3(),
-                _buildSizedBox(),
-                _homeButton4(),
+                _homeButton(mygear, () {}),
               ],
             ),
           ),
@@ -79,13 +77,13 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  ElevatedButton _homeButton1() {
+  ElevatedButton _homeButton(String text, Function func) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
             side: const BorderSide(
-              color: Colors.white,
+              color: white,
             )),
         primary: Colors.black87,
       ),
@@ -93,93 +91,12 @@ class _HomeScreenState extends State<HomeScreen> {
         width: SizeConfig.blockSizeHorizontal * 50,
         height: SizeConfig.blockSizeVertical * 10,
         alignment: Alignment.center,
-        child: const Text(
-          'Log a Fishing Spot',
-          style: TextStyle(fontSize: 14),
+        child: Text(
+          text,
+          style: const TextStyle(fontSize: 14),
         ),
       ),
-      onPressed: () {
-        //_saveFormValues();
-        //Navigator.pushNamed(context, LoginScreen.routeName);
-      },
-    );
-  }
-
-  ElevatedButton _homeButton2() {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            side: const BorderSide(
-              color: Colors.white,
-            )),
-        primary: Colors.black87,
-      ),
-      child: Container(
-        width: SizeConfig.blockSizeHorizontal * 50,
-        height: SizeConfig.blockSizeVertical * 10,
-        alignment: Alignment.center,
-        child: const Text(
-          'View my spots',
-          style: TextStyle(fontSize: 14),
-        ),
-      ),
-      onPressed: () {
-        //_saveFormValues();
-        //Navigator.pushNamed(context, LoginScreen.routeName);
-      },
-    );
-  }
-
-  ElevatedButton _homeButton3() {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            side: const BorderSide(
-              color: Colors.white,
-            )),
-        primary: Colors.black87,
-      ),
-      child: Container(
-        width: SizeConfig.blockSizeHorizontal * 50,
-        height: SizeConfig.blockSizeVertical * 10,
-        alignment: Alignment.center,
-        child: const Text(
-          'View my matches',
-          style: TextStyle(fontSize: 14),
-        ),
-      ),
-      onPressed: () {
-        //_saveFormValues();
-        //Navigator.pushNamed(context, LoginScreen.routeName);
-      },
-    );
-  }
-
-  ElevatedButton _homeButton4() {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            side: const BorderSide(
-              color: Colors.white,
-            )),
-        primary: Colors.black87,
-      ),
-      child: Container(
-        width: SizeConfig.blockSizeHorizontal * 50,
-        height: SizeConfig.blockSizeVertical * 10,
-        alignment: Alignment.center,
-        child: const Text(
-          'My Gear',
-          style: TextStyle(fontSize: 14),
-        ),
-      ),
-      onPressed: () {
-        //_saveFormValues();
-        //Navigator.pushNamed(context, LoginScreen.routeName);
-      },
+      onPressed: () => func,
     );
   }
 
@@ -193,30 +110,29 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             onPressed: () {},
             icon: SvgPicture.asset(
-              'assets/icons/home.svg',
-              color: Colors.black54,
-            ),
-            //color: Colors.black,
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              'assets/icons/location.svg',
-              color: Colors.black54,
+              homeSvg,
+              color: blackTransparent,
             ),
           ),
           IconButton(
             onPressed: () {},
             icon: SvgPicture.asset(
-              'assets/icons/fish.svg',
-              color: Colors.black54,
+              locationSvg,
+              color: blackTransparent,
             ),
           ),
           IconButton(
             onPressed: () {},
             icon: SvgPicture.asset(
-              'assets/icons/menu.svg',
-              color: Colors.black54,
+              fishSvg,
+              color: blackTransparent,
+            ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(
+              menuSvg,
+              color: blackTransparent,
             ),
           ),
         ],

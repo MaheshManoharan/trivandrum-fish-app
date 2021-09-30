@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trivandrum_fish_task/config/constants.dart';
 import 'package:trivandrum_fish_task/config/size_config.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -43,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
-              'assets/images/background.png',
+              backgroundImage,
             ),
             fit: BoxFit.cover,
           ),
@@ -57,8 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/appLogo.png',
-                    // fit: BoxFit.cover,
+                    appLogo,
                     width: SizeConfig.blockSizeHorizontal * 48,
                     height: SizeConfig.blockSizeHorizontal * 55,
                   ),
@@ -89,9 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
         color: Colors.white.withOpacity(0.5),
       ),
       child: TextFormField(
-        onSaved: (newValue) {
-//          password = newValue;
-        },
+        onSaved: (newValue) {},
         decoration: const InputDecoration(
           hintText: 'Password',
           hintStyle: TextStyle(
@@ -137,9 +135,10 @@ class _LoginScreenState extends State<LoginScreen> {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         shape: const CircleBorder(
-            side: BorderSide(
-          color: Colors.white,
-        )),
+          side: BorderSide(
+            color: Colors.white,
+          ),
+        ),
         primary: Colors.black54,
       ),
       child: Container(
